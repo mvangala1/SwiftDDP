@@ -265,6 +265,13 @@ extension DDPClient {
                         self.userData.set(username, forKey: DDP_USERNAME)
                     }
                 }
+                // user can login with username/ email outside user object
+                if let email = params["email"] {
+                    self.userData.set(email, forKey: DDP_EMAIL)
+                }
+                if let username = params["username"] {
+                    self.userData.set(username, forKey: DDP_USERNAME)
+                }
                 
                 if let data = result as? NSDictionary,
                     let id = data["id"] as? String,
